@@ -46,6 +46,7 @@ function _update()
     -- game not over
     if is_playing then
         has_started = 1
+        score+=1
 
         -- map scrolling
         scroll_position_x = scroll_position_x + 1
@@ -143,8 +144,10 @@ function _draw()
             print("gravity: up",2,2,7)
         end
 
+        print("score: " .. score)
+
     elseif is_playing == false and dead == true then
-        print("game over. press z to try again\n press x to quit",2,63,7)
+        print("game over. your score was " .. score .. "\npress z to try again\npress x to quit",2,63,7)
 
     -- title screen
     else
