@@ -3,13 +3,13 @@ version 43
 __lua__
 #include bullets.lua
 
-has_started = 0
+has_started = false
 
 function _init()
     dead = false
     score = 0
 
-    if has_started == 0 then
+    if has_started == false then
         is_playing = false
     else
         is_playing = true
@@ -91,18 +91,17 @@ function _update()
     ----------------------------
     -- game over
     elseif is_playing == false and dead == true then
-        if btnp(y) then
+        if btnp(4) then
             has_started=true
             _init()
-        end
-        if btnp(n) then
+        elseif btnp(5) then
             has_started=false
             _init()
         end
 
     -- title screen
     else
-        if btnp(x) then
+        if btnp(4) then
             is_playing = true
         end
     end
@@ -129,11 +128,11 @@ function _draw()
         end
 
     elseif is_playing == false and dead == true then
-        print("game over. press y to try again, press n to quit",63,63,7)
+        print("game over. press z to try again\n press x to quit",2,63,7)
 
     -- title screen
     else
-        print("press x to play",63,63,7)
+        print("press z to play",63,63,7)
 
 
     end
