@@ -7,6 +7,7 @@ has_started = false
 
 function _init()
     dead = false
+    death_timer = 0
     score = 0
 
     if has_started == false then
@@ -83,7 +84,14 @@ function _update()
             spawn_bullet()
         end
         
-        update_bullets()
+        if death_timer > 0 then
+            death_timer-=1
+            if death_timer == 0 then
+                dead=true
+            end
+        else
+            update_bullets()
+        end
 
         if dead == true then
             is_playing=false

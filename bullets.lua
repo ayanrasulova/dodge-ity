@@ -76,9 +76,8 @@ function update_bullets()
             del(bullets,b)
         -- detect if this bullet hit crush
         elseif bullet_collision_check(b) then
-            -- add game over
             del(bullets, b)
-            dead = true
+            death_timer = 30
             -- will add sfx(0)
             break
         end
