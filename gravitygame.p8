@@ -35,6 +35,9 @@ function _init()
 		sprite=1
 	}
 
+    -- map scrolling
+    scroll_position_x=0
+
 	animation_timer=0
 end
 
@@ -43,6 +46,10 @@ function _update()
     -- game not over
     if is_playing then
         has_started = 1
+
+        -- map scrolling
+        scroll_position_x = scroll_position_x + 1
+        scroll_position_x = scroll_position_x % 128 -- once the position is at the end, reset
 
         -- up arrow: gravity goes upward
         if btnp(2) then
@@ -120,7 +127,8 @@ function _draw()
     if is_playing then
 
         -- map
-        map(0,0,0,0,64,16)
+        map(0,0,-scroll_position_x,0,64,16)
+        map(0,0,-scroll_position_x+128,0,64,16)
 
         -- player
         spr(player.sprite,player.x,player.y)
