@@ -60,14 +60,16 @@ end
 function update_bullets()
     for b in all(bullets) do
 
-        -- move horizontally
-        b.x+=b.dx
+        if not b.stopped then
+            -- move horizontally
+            b.x+=b.dx
 
-        -- move vertically
-        b.y+=b.dy
+            -- move vertically
+            b.y+=b.dy
 
-        -- apply gravity
-        b.dy+=gravity*gravity_dir
+            -- apply gravity
+            b.dy+=gravity*gravity_dir
+        end
 
         -- remove bullets outside the screen
         if b.x < -8 or b.x > 136 or
@@ -75,11 +77,11 @@ function update_bullets()
 
             del(bullets,b)
         -- detect if this bullet hit crush
-        elseif bullet_collision_check(b) then
-            del(bullets, b)
+        elseif death_timer == 0 and bullet_collision_check(b) then
+            b.stopped=true
             death_timer = 30
+            hit_flash_timer = 30
             -- will add sfx(0)
-            break
         end
 
     end
