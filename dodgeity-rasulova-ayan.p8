@@ -260,13 +260,16 @@ function _draw()
 
     elseif is_playing == false and dead == true then
         cls(0)
-        print("game over. your score was " .. score .. "\npress z to try again,\npress x to quit",2,63,8)
+        print("\^w\^tGAME OVER",2,20,8)
+        print("you just let your crush die. or\nnot die. but get hurt. badly.\nshe is never going to like \nyou now.\n\nyou know what. maybe you\nnever stood a chance.\n\nyour score was " .. score .. "\n\npress z to try again\npress x to quit",2,43,7)
 
     -- title screen
     else
         cls(0)
-        print("\^w\^tDODGE-ITY",2,20,8)
-        print("you just realized.. you control \ngravity. you must defend your \ncrush from dodgeballs\n\nuse the up and down controls\nto control gravity's direction\npress z to play",2,43,7)
+        print("\^w\^tDODGE-ITY",2,15,8)
+        print("you just realized.. you control \ngravity. you must defend your \ncrush from dodgeballs with these\nnew found powers!!\n\nuse the up and down controls\nto control gravity's direction\n\npress z to play",2,35,7)
+
+        print("audio credits - @gruber_music\nand @krajzeg",2,110,6)
 
 
     end
